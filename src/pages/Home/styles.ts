@@ -1,14 +1,26 @@
-import { Package, ShoppingCart } from 'phosphor-react';
 import styled from 'styled-components';
+import Bg from '../../assets/Background.svg';
+
+export const Teste = styled.div`
+  /* background-color: red; */
+  background-image: url('${Bg}');
+  background-position: top;
+  background-size: contain;
+  background-repeat: no-repeat;
+`;
 
 export const HeaderContainer = styled.section`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  max-width: 74rem;
+  margin: 0 auto;
+
+  
 `;
 
 export const HeaderContent = styled.div`
-  max-width: 558px;
+  max-width: 588px;
 
   p {
     color: ${(props) => props.theme['base_subtitle']};
@@ -24,40 +36,30 @@ export const TitleHeader = styled.h1`
   line-height: 1.3;
 `;
 
-export const IconContainer = styled.div`
+export const ListItens = styled.div`
+  display: grid;
+  grid-template-columns: 45% 55%;
+  margin-top: 4.5rem;
+`;
+
+export const ListItem = styled.div`
   display: flex;
   align-items: center;
-  gap: 2.5rem;
+  gap: 0.75rem;
+  margin: 0 0 1.5rem 0;
 `;
 
-export const Icon = styled.div`
+export const IconContainer = styled.div<{ bgColor?: string }>`
   display: flex;
-  gap: 0.75rem;
-  margin-top: 1.25rem;
+  align-items: center;
+  justify-content: center;
 
-  span {
-    display: flex;
-    align-items: center;
-    color: ${(props) => props.theme['base_text']};
-    font-size: 1rem;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: ${(props) => props.bgColor};
+
+  svg {
+    color: ${(props) => props.theme['white']};
   }
 `;
-
-export const IconCar = styled(ShoppingCart)`
-  width: 32px;
-  height: 32px;
-  padding: 8px;
-  border-radius: 50%;
-  background-color: ${(props) => props.theme['yellow_dark']};
-  color: ${(props) => props.theme['white']}
-`;
-
-export const IconPackage = styled(Package)`
-  width: 32px;
-  height: 32px;
-  padding: 8px;
-  border-radius: 50%;
-  background-color: ${(props) => props.theme['base_text']};
-  color: ${(props) => props.theme['white']}
-`;
-
