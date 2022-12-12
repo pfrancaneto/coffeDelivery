@@ -14,6 +14,10 @@ export const IntroContainer = styled.section`
     )
   `};
   background-size: cover;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const IntroContent = styled.div`
