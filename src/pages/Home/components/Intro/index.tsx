@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react';
 
-import BgIntro from '../../../../assets/BgHome.svg';
+import BgIntro from '../../../../assets/bg-home.svg';
 import { IconeInfo } from '../../../../components/IconeInfo';
 
 import { defaultTheme } from '../../../../styles/themes/default';
@@ -50,7 +50,7 @@ const dados: OutDadosBeneficios[] = [
 export const Intro = () => {
   return (
     <IntroContainer>
-      <IntroContent>
+      <IntroContent className='container'>
         <div>
           <section>
             <Title>Encontre o café perfeito para qualquer hora do dia</Title>

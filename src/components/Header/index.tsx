@@ -5,7 +5,7 @@ import {
 } from './styles';
 import { MapPin, ShoppingCart } from 'phosphor-react';
 
-import Logo from '../../assets/Logo.svg';
+import Logo from '../../assets/logo.svg';
 
 export const Header = () => {
   return (
