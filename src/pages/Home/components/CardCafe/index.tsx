@@ -44,7 +44,7 @@ export const CardCafe = ({ cafe }: CardCafeProps) => {
           <p>{formatarPreco}</p>
         </div>
         <CarrinhoContainer>
-          <InputQuantidade quantidade={3} />
+          <InputQuantidade />
           <button>
             <ShoppingCart weight="fill" size={22} />
           </button>
