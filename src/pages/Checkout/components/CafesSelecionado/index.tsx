@@ -1,4 +1,5 @@
 import { CardCafeCarrinho } from '../CardCafeCarrinho';
+import { ConfirmarPagamento } from './ConfirmarPagamento';
 import {
   CafesSelecionadoContainer,
   DetalhesContainer,
@@ -12,6 +13,8 @@ export const CafesSelecionado = () => {
       <DetalhesContainer>
         <CardCafeCarrinho />
         <CardCafeCarrinho />
+
+        <ConfirmarPagamento />
       </DetalhesContainer>
     </CafesSelecionadoContainer>
   );
