@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import {
   ActionsHeaderContainer,
   HeaderButton,
@@ -11,15 +12,19 @@ export const Header = () => {
   return (
     <HeaderContainer>
       <div className="container">
-        <img src={Logo} alt="Coffe Delivery" />
+        <NavLink to="/">
+          <img src={Logo} alt="Coffe Delivery" />
+        </NavLink>
         <ActionsHeaderContainer>
           <HeaderButton variant="purple">
             <MapPin size={20} weight="fill" />
             Porto Alegre, RS
           </HeaderButton>
-          <HeaderButton variant="yellow">
-            <ShoppingCart size={20} weight="fill" />
-          </HeaderButton>
+          <NavLink to="/checkout">
+            <HeaderButton variant="yellow">
+              <ShoppingCart size={20} weight="fill" />
+            </HeaderButton>
+          </NavLink>
         </ActionsHeaderContainer>
       </div>
     </HeaderContainer>
