@@ -37,6 +37,7 @@ export const HeaderButton = styled.button<HeaderButtonProps>`
   border: none;
   position: relative;
   font-size: 0.875rem;
+  cursor: inherit;
 
   ${({ theme, variant }) => css`
     background-color: ${theme[`${variant}_light`]};
