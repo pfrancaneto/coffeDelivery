@@ -35,8 +35,7 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
 
     setCartItems(novoItem);
   }
-  console.log(cartItems)
-
+  
   return (
     <CartContext.Provider value={{ cartItems, adicionarCafeCarrinho }}>
       {children}
