@@ -9,6 +9,8 @@ import {
 import { ShoppingCart } from 'phosphor-react';
 import { InputQuantidade } from '../../../../components/InputQuantidade';
 import { formatarDinheiro } from '../../../../Utils/formatarDinheiro';
+import { useCart } from '../../../../hooks/useCart';
+import { useState } from 'react';
 
 export interface Cafe {
   id: number;
@@ -24,6 +26,25 @@ interface CardCafeProps {
 }
 
 export const CardCafe = ({ cafe }: CardCafeProps) => {
+  const [quantidade, setQuantidade] = useState(1);
+  const { adicionarCafeCarrinho } = useCart();
+
+  function handleAumentarQuantidade() {
+    setQuantidade((state) => state + 1);
+  }
+
+  function handleDiminuirQuantidade() {
+    setQuantidade((state) => state - 1);
+  }
+
+  function handleAddToCart() {
+    const adicionarCafe = {
+      ...cafe,
+      quantidade,
+    };
+    adicionarCafeCarrinho(adicionarCafe);
+  }
+
   const formatarPreco = formatarDinheiro(cafe.preco);
 
   return (
@@ -34,7 +55,6 @@ export const CardCafe = ({ cafe }: CardCafeProps) => {
           <span key={`${cafe.id}${tag}`}>{tag}</span>
         ))}
       </TagsContainer>
-
       <NomeCafe>{cafe.nome}</NomeCafe>
       <Descricao>{cafe.descricao}</Descricao>
 
@@ -44,8 +64,12 @@ export const CardCafe = ({ cafe }: CardCafeProps) => {
           <p>{formatarPreco}</p>
         </div>
         <CarrinhoContainer>
-          <InputQuantidade />
-          <button>
+          <InputQuantidade
+            onIncrease={handleAumentarQuantidade}
+            onDecrease={handleDiminuirQuantidade}
+            quantity={quantidade}
+          />
+          <button onClick={handleAddToCart}>
             <ShoppingCart weight="fill" size={22} />
           </button>
         </CarrinhoContainer>
