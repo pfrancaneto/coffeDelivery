@@ -11,8 +11,13 @@ export const HeaderContainer = styled.header`
   justify-content: center;
   align-items: center;
   background-color: ${(props) => props.theme['background']};
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 5;
 
   > div {
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -37,10 +42,31 @@ export const HeaderButton = styled.button<HeaderButtonProps>`
   border: none;
   position: relative;
   font-size: 0.875rem;
+  cursor: inherit;
+
+  span {
+    position: absolute;
+    height: 1.25rem;
+    width: 1.25rem;
+    color: ${({ theme }) => theme['white']};
+    border-radius: 50%;
+    top: calc(-1.25rem / 2);
+    right: calc(-1.25rem / 2);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .75rem;
+    font-weight: 700;
+  }
 
   ${({ theme, variant }) => css`
     background-color: ${theme[`${variant}_light`]};
     color: ${theme[`${variant}_dark`]};
+
+    span {
+      background-color: ${theme[`${variant}_dark`]};
+    }
   `}
 
   ${({ theme, variant }) =>
