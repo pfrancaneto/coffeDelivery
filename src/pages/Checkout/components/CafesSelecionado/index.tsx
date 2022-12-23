@@ -15,7 +15,7 @@ export const CafesSelecionado = () => {
       <TitleCafeSelecionado>Cafés Selecionados</TitleCafeSelecionado>
       <DetalhesContainer>
         {cartItems.map((item) => (
-          <CardCafeCarrinho key={item.id} cafe={item}/>
+          <CardCafeCarrinho key={item.id} cafe={item} />
         ))}
 
         <ConfirmarPagamento />

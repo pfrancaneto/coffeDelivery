@@ -1,5 +1,5 @@
-import { Button } from "../../../../../components/Button";
-import { ConfirmarPagamentoContainer } from "./styles";
+import { Button } from '../../../../../components/Button';
+import { ConfirmarPagamentoContainer } from './styles';
 
 export const ConfirmarPagamento = () => {
   return (
@@ -16,7 +16,7 @@ export const ConfirmarPagamento = () => {
         <span>Total</span>
         <span>R$ 29,90</span>
       </div>
-      <Button text='Confirmar Pedido' />
+      <Button text="Confirmar Pedido" type="submit" />
     </ConfirmarPagamentoContainer>
   );
-}
+};
