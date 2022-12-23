@@ -9,6 +9,11 @@ export interface CartItem extends Cafe {
 interface CartContextType {
   cartItems: CartItem[];
   adicionarCafeCarrinho: (cafe: CartItem) => void;
+  changeCartItemQuantity: (
+    cartItemId: number,
+    type: 'increase' | 'decrease',
+  ) => void;
+  removeCartItem: (cartItemId: number) => void;
 }
 
 interface CartContextProviderProps {
@@ -35,9 +40,49 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
 
     setCartItems(novoItem);
   }
-  
+
+  function changeCartItemQuantity(
+    cartItemId: number,
+    type: 'increase' | 'decrease',
+  ) {
+    const newCart = produce(cartItems, (draft) => {
+      const coffeeExistsInCart = cartItems.findIndex(
+        (cartItem) => cartItem.id === cartItemId,
+      );
+
+      if (coffeeExistsInCart >= 0) {
+        const item = draft[coffeeExistsInCart];
+        draft[coffeeExistsInCart].quantidade =
+          type === 'increase' ? item.quantidade + 1 : item.quantidade - 1;
+      }
+    });
+
+    setCartItems(newCart);
+  }
+
+  function removeCartItem(cartItemId: number) {
+    const newCart = produce(cartItems, (draft) => {
+      const coffeeExistsInCart = cartItems.findIndex(
+        (cartItem) => cartItem.id === cartItemId,
+      );
+
+      if (coffeeExistsInCart >= 0) {
+        draft.splice(coffeeExistsInCart, 1);
+      }
+    });
+
+    setCartItems(newCart);
+  }
+
   return (
-    <CartContext.Provider value={{ cartItems, adicionarCafeCarrinho }}>
+    <CartContext.Provider
+      value={{
+        cartItems,
+        adicionarCafeCarrinho,
+        changeCartItemQuantity,
+        removeCartItem,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );
