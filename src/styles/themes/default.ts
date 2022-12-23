@@ -20,4 +20,6 @@ export const defaultTheme = {
   base_text: '#574F4D',
   base_subtitle: '#403937',
   base_title: '#272221',
+
+  base_error: '#e45',
 }
