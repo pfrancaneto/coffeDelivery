@@ -3,9 +3,27 @@ import bgEntrega from '../../assets/bg-entrega.png';
 import { IconeInfo } from '../../components/IconeInfo';
 import { Clock, CurrencyDollar, MapPin } from 'phosphor-react';
 import { useTheme } from 'styled-components';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { PedidoData } from '../Checkout';
+import { metodosPagamento } from '../Checkout/components/CheckoutForm/OpcaoPagamento';
+import { useEffect } from 'react';
+
+interface LocationType {
+  state: PedidoData;
+}
 
 export const ConfirmacaoPedido = () => {
   const { purple, yellow, yellow_dark } = useTheme();
+  const { state } = useLocation() as unknown as LocationType;
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!state) {
+      navigate('/');
+    }
+  }, []);
+
+  if (!state) return <></>;
 
   return (
     <ConfirmacaoPedidoContainer className="container">
@@ -15,38 +33,41 @@ export const ConfirmacaoPedido = () => {
       </div>
       <section>
         <DetalhesPedidoContainer>
-          <IconeInfo 
-            icone={<MapPin weight='fill' />} 
-            iconeBgColor={purple} 
+          <IconeInfo
+            icone={<MapPin weight="fill" />}
+            iconeBgColor={purple}
             descricao={
               <span>
-                Entrega em <strong>Rua João Daniel Martinelli, 102</strong>
+                Entrega em{' '}
+                <strong>
+                  {state.rua}, {state.numero}
+                </strong>
                 <br />
-                Farrapos - Porto Alegre, RS
+                {state.bairro} - {state.cidade}, {state.uf}
               </span>
-            } 
+            }
           />
-          <IconeInfo 
-            icone={<Clock weight='fill' />} 
-            iconeBgColor={yellow} 
+          <IconeInfo
+            icone={<Clock weight="fill" />}
+            iconeBgColor={yellow}
             descricao={
               <span>
                 Previsão de entrega
                 <br />
                 <strong>20 min - 30 min</strong>
               </span>
-            } 
+            }
           />
-          <IconeInfo 
-            icone={<CurrencyDollar weight='fill' />} 
-            iconeBgColor={yellow_dark} 
+          <IconeInfo
+            icone={<CurrencyDollar weight="fill" />}
+            iconeBgColor={yellow_dark}
             descricao={
               <span>
                 Pagamento na entrega
                 <br />
-                <strong>Cartão de Crédito</strong>
+                <strong>{metodosPagamento[state.metodoPagamento].label}</strong>
               </span>
-            } 
+            }
           />
         </DetalhesPedidoContainer>
         <img src={bgEntrega} alt="" />
@@ -54,4 +75,3 @@ export const ConfirmacaoPedido = () => {
     </ConfirmacaoPedidoContainer>
   );
 };
-

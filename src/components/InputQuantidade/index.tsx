@@ -3,26 +3,24 @@ import { useCallback, useState } from 'react';
 import { IconeWrapper, InputQuantidadeContainer } from './styles';
 interface InputQuantidadeProps {
   size?: 'medium' | 'small';
+  onIncrease: () => void;
+  onDecrease: () => void;
+  quantity: number;
 }
 
-export const InputQuantidade = ({ size = 'medium' }: InputQuantidadeProps) => {
-  const [unidade, setUnidade] = useState(1);
-
-  const adicionarQuantidade = useCallback(() => {
-    setUnidade((state) => state + 1);
-  }, []);
-
-  const removerQuantidade = useCallback(() => {
-    setUnidade((state) => state - 1);
-  }, []);
-
+export const InputQuantidade = ({
+  size = 'medium',
+  onDecrease,
+  onIncrease,
+  quantity,
+}: InputQuantidadeProps) => {
   return (
     <InputQuantidadeContainer size={size}>
-      <IconeWrapper onClick={removerQuantidade} disabled={unidade <= 1}>
+      <IconeWrapper onClick={onDecrease} disabled={quantity <= 1}>
         <Minus size={14} weight="fill" />
       </IconeWrapper>
-      <input type="number" readOnly value={unidade} />
-      <IconeWrapper onClick={adicionarQuantidade}>
+      <input type="number" readOnly value={quantity} />
+      <IconeWrapper onClick={onIncrease}>
         <Plus size={14} weight="fill" />
       </IconeWrapper>
     </InputQuantidadeContainer>
