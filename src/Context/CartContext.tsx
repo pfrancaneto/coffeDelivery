@@ -15,6 +15,8 @@ interface CartContextType {
   ) => void;
   removeCartItem: (cartItemId: number) => void;
   limparCarrinho: () => void;
+  quantidadeItemCarrinho: number;
+  somaTotalItems: number;
 }
 
 interface CartContextProviderProps {
@@ -25,6 +27,12 @@ export const CartContext = createContext({} as CartContextType);
 
 export function CartContextProvider({ children }: CartContextProviderProps) {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
+
+  const quantidadeItemCarrinho = cartItems.length;
+
+  const somaTotalItems = cartItems.reduce((total, cartItem) => {
+    return total + cartItem.preco * cartItem.quantidade;
+  }, 0);
 
   function adicionarCafeCarrinho(cafe: CartItem) {
     const cafeSelecionadoCarrinho = cartItems.findIndex(
@@ -87,6 +95,8 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
         changeCartItemQuantity,
         removeCartItem,
         limparCarrinho,
+        quantidadeItemCarrinho,
+        somaTotalItems,
       }}
     >
       {children}
