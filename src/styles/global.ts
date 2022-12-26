@@ -37,4 +37,16 @@ export const GlobalStyle = createGlobalStyle`
     -moz-appearance: textfield;
   }
 
+  body::-webkit-scrollbar {
+    width: 14px;
+  }
+
+  body::-webkit-scrollbar-track {
+    background-color: ${({ theme }) => theme['base_button']};
+  }
+
+  body::-webkit-scrollbar-thumb {
+    background-color: ${({ theme }) => theme['purple']};
+    border-radius: 6px;
+  }
 `;
