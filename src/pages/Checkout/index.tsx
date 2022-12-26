@@ -4,6 +4,7 @@ import { CheckoutContainer } from './styles';
 import * as zod from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm, FormProvider } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 
 enum MetodosPagamento {
   credito = 'credito',
@@ -37,8 +38,12 @@ export const Checkout = () => {
 
   const { handleSubmit } = confirmacaoForm;
 
+  const navigate = useNavigate();
+
   const handleConfirmarPedido = (data: ConfirmacaoPedidoFormData) => {
-    console.log(data);
+    navigate('/confirmacao', {
+      state: data,
+    });
   };
 
   return (
