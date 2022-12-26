@@ -1,7 +1,7 @@
 import { CurrencyDollar, MapPinLine } from 'phosphor-react';
 import { TituloSection } from '../TituloSection';
 import { EnderecoForm } from './EnderecoForm';
-import { FormaPagamento } from './FormaPagamento';
+import { OpcaoPagamento } from './OpcaoPagamento';
 import { CheckoutFormContainer, SectionFormContainer, Title } from './styles';
 
 export const CheckoutForm = () => {
@@ -22,7 +22,7 @@ export const CheckoutForm = () => {
           subTitulo="O pagamento é feito na entrega. Escolha a forma que deseja pagar"
           icone={<CurrencyDollar color="#8047F8" size={22} />}
         />
-        <FormaPagamento />
+        <OpcaoPagamento />
       </SectionFormContainer>
     </CheckoutFormContainer>
   );
