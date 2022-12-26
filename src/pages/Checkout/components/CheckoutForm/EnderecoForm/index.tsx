@@ -41,6 +41,7 @@ export const EnderecoForm = () => {
         className="complemento"
         {...register('complemento')}
         error={errors.complemento?.message}
+        textoDireita='Opcional'
       />
       <Input
         placeholder="Bairro"
