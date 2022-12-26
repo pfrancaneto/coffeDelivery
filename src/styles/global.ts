@@ -38,7 +38,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body::-webkit-scrollbar {
-    width: 14px;
+    width: 0.4rem;
   }
 
   body::-webkit-scrollbar-track {
@@ -47,6 +47,6 @@ export const GlobalStyle = createGlobalStyle`
 
   body::-webkit-scrollbar-thumb {
     background-color: ${({ theme }) => theme['purple']};
-    border-radius: 6px;
+    border-radius: 2rem;
   }
 `;
