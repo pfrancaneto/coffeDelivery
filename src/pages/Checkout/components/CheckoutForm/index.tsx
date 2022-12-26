@@ -12,15 +12,15 @@ export const CheckoutForm = () => {
         <TituloSection
           titulo="Endereço de Entrega"
           subTitulo="Informe o endereço onde deseja receber seu pedido"
-          icone={<MapPinLine color='#C47F17' size={22} />}
+          icone={<MapPinLine color="#C47F17" size={22} />}
         />
         <EnderecoForm />
       </SectionFormContainer>
       <SectionFormContainer>
-        <TituloSection 
-          titulo='Pagamento'
-          subTitulo='O pagamento é feito na entrega. Escolha a forma que deseja pagar'
-          icone={<CurrencyDollar color='#8047F8' size={22} />} 
+        <TituloSection
+          titulo="Pagamento"
+          subTitulo="O pagamento é feito na entrega. Escolha a forma que deseja pagar"
+          icone={<CurrencyDollar color="#8047F8" size={22} />}
         />
         <FormaPagamento />
       </SectionFormContainer>
